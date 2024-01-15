@@ -1,0 +1,50 @@
+backports-abc>=0.5
+backports.functools-lru-cache>=1.4
+certifi>=2017.7.27.1
+cffi>=1.10.0
+chardet>=3.0.4
+conda==4.3.16
+# conda
+cycler>=0.10.0
+# Cython
+easydict>=1.7
+enum34>=1.1.6
+h5py>=2.7.1
+idna>=2.5
+matplotlib
+mpmath>=0.19
+nltk>=3.2.5
+numpy
+olefile>=0.47
+# opencv-python>=3.3.0.10
+opencv-python>=3.4.0.14
+Pillow>=4.2.1
+# pkg-resources
+# pycocotools>=2.0
+pycocotools
+pycosat>=0.6.1
+pycparser>=2.18
+pyparsing>=2.2.0
+python-dateutil>=2.6.1
+pytz>=2017.3
+PyYAML>=3.12
+pyzmq>=16.0.2
+requests>=2.18.3
+ruamel.ordereddict>=0.4.13
+ruamel.yaml>=0.15.34
+# ruamel.yaml
+scikit-learn>=0.19.0
+scipy>=0.19.1
+singledispatch>=3.4.0.3
+six>=1.10.0
+# sklearn>=0.0
+scikit-learn
+# subprocess32>=3.2.7
+subprocess32
+sympy>=1.1.1
+torch
+torchvision
+tornado>=4.5.1
+urllib3>=1.22
+# visdom>=0.1.5
+visdom==0.2.4

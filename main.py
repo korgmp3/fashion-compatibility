@@ -94,7 +94,8 @@ def main():
     test_loader = torch.utils.data.DataLoader(
         TripletImageLoader(args, 'test', meta_data,
                            transform=transforms.Compose([
-                               transforms.Scale(112),
+                            #    transforms.Scale(112),
+                               transforms.Resize(112),
                                transforms.CenterCrop(112),
                                transforms.ToTensor(),
                                normalize,
@@ -113,7 +114,9 @@ def main():
         TripletImageLoader(args, 'train', meta_data,
                            text_dim=text_feature_dim,
                            transform=transforms.Compose([
-                               transforms.Scale(112),
+                            #    transforms.Scale(112),
+                               transforms.Resize(112),
+
                                transforms.CenterCrop(112),
                                transforms.RandomHorizontalFlip(),
                                transforms.ToTensor(),
@@ -123,7 +126,8 @@ def main():
     val_loader = torch.utils.data.DataLoader(
         TripletImageLoader(args, 'valid', meta_data,
                            transform=transforms.Compose([
-                               transforms.Scale(112),
+                            #    transforms.Scale(112),
+                               transforms.Resize(112),
                                transforms.CenterCrop(112),
                                transforms.ToTensor(),
                                normalize,
@@ -135,7 +139,8 @@ def main():
     if args.resume:
         if os.path.isfile(args.resume):
             print("=> loading checkpoint '{}'".format(args.resume))
-            checkpoint = torch.load(args.resume)
+            # checkpoint = torch.load(args.resume)
+            checkpoint = torch.load(args.resume, map_location=torch.device('cpu'), encoding='latin1')
             args.start_epoch = checkpoint['epoch']
             best_acc = checkpoint['best_prec1']
             tnet.load_state_dict(checkpoint['state_dict'])
@@ -170,8 +175,8 @@ def main():
             'state_dict': tnet.state_dict(),
             'best_prec1': best_acc,
         }, is_best)
-
-    checkpoint = torch.load('runs/%s/'%(args.name) + 'model_best.pth.tar')
+    # checkpoint = torch.load('runs/%s/'%(args.name) + 'model_best.pth.tar')
+    checkpoint = torch.load('runs/%s/'%(args.name) + 'model_best.pth.tar', map_location=torch.device('cpu'), encoding='latin1')
     tnet.load_state_dict(checkpoint['state_dict'])
     test_acc = test(test_loader, tnet)
 
